@@ -1,0 +1,51 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<link rel="stylesheet" th:href="@{/css/index.css}" th:rel="stylesheet"></link>
+<link rel="stylesheet" th:rel="stylesheet"
+	th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css}"></link>
+<body>
+	<!-- <div th:insert="/navbar"></div> -->
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-6">
+				<div class="card">
+
+					<form action="#" th:action="@{/login}" method="post" class="box1">
+
+						<div class="alert alert-danger" role="alert"
+							th:if="${param.error}">The email or password is incorrect!
+						</div>
+						<h1>Login</h1>
+						<p class="text-muted">Please enter your login and password!</p>
+
+						<input type="text" name="email" placeholder="Email" id="email"
+							required autofocus></input> <input type="password"
+							name="password" placeholder="Password" id="password" required
+							autofocus></input> <input type="submit" name="" value="Login"></input>
+
+
+
+						<div class="margin-top20 text-center">
+							Don't have an account? <a th:href="@{/signup}">Create an
+								account</a>
+						</div>
+
+
+					</form>
+
+
+
+
+
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<script th:src="@{/webjars/jquery/3.0.0/jquery.min.js}"></script>
+	<script th:src="@{/webjars/popper.js/1.12.9-1/umd/popper.min.js}"></script>
+	<script th:src="@{/webjars/bootstrap/4.0.0-2/js/bootstrap.min.js}"></script>
+</body>
+</html>

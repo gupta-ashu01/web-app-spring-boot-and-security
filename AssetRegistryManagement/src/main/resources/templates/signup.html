@@ -1,0 +1,65 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<link rel="stylesheet" th:href="@{/css/index.css}" th:rel="stylesheet"></link>
+<link rel="stylesheet" th:rel="stylesheet"
+	th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css}"></link>
+<body>
+	<!-- <div th:insert="/navbar"></div> -->
+
+	<div class="container-fluid">
+		<div class="row">
+
+			<div class="col-md-6">
+				<div class="card">
+					<div class="box2">
+						<form action="#" th:action="@{/signup}" method="post"
+							th:object="${user}">
+
+							<div class="form-control-feedback">
+								<span class="alert alert-danger" role="alert"
+									th:if="${#fields.hasErrors('email')}" th:errors="*{email}">
+								</span>
+							</div>
+							<div style="height: 30px"></div>
+							<div class="form-control-feedback alert alert-success" role="alert" th:if="${msg}"
+								th:utext="${msg}"></div>
+
+							<h1>REGISTER</h1>
+							<p class="text-muted">Please register yourself as User or
+								Administrator</p>
+
+							<input type="text" th:field="*{name}" name=""
+								placeholder="Username" required autofocus></input> <input
+								type="text" th:field="*{email}" name="" placeholder="Email"
+								required autofocus></input> <input type="password"
+								th:field="*{password}" name="" placeholder="Password" required
+								autofocus></input>
+
+
+							<button type="submit" class="btn btn-primary btn-lg"
+								name="action" value="user">Register As User</button>
+
+							<button type="submit" class="btn btn-primary btn-lg"
+								name="action" value="admin">Register As Admin</button>
+
+	<div class="margin-top20 text-center">
+							Already a User? <a th:href="@{/login}">Log in</a>
+						</div>
+
+
+						</form>
+
+
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<script th:src="@{/webjars/jquery/3.0.0/jquery.min.js}"></script>
+	<script th:src="@{/webjars/popper.js/1.12.9-1/umd/popper.min.js}"></script>
+	<script th:src="@{/webjars/bootstrap/4.0.0-2/js/bootstrap.min.js}"></script>
+</body>
+</html>

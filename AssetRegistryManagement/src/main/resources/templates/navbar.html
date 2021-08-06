@@ -1,0 +1,67 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<link th:rel="stylesheet"
+	th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css}"></link>
+
+</head>
+<body>
+	<div th:fragment="navbar">
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<a class="navbar-brand" href="#">Navbar</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item active"><a class="nav-link"
+						th:href="@{/create-asset}">Create Asset </a></li>
+					<li class="nav-item"><a class="nav-link"
+						th:href="@{/all-assets}">All Assets</a></li>
+					<div sec:authorize="hasAuthority('ADMIN')">
+						<li class="nav-item dropdown"><a
+							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+							role="button" data-toggle="dropdown" aria-haspopup="true"
+							aria-expanded="false"> Master </a>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+								<a class="dropdown-item" th:href="@{/master/asset-type}">Asset
+									Type</a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" th:href="@{/master/category}">Category</a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" th:href="@{/master/department}">Department</a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" th:href="@{/master/division}">Division</a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" th:href="@{/master/region}">Region</a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" th:href="@{/master/status}">Status</a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" th:href="@{/master/vendor}">Vendor</a>
+							</div></li>
+					</div>
+				</ul>
+				<a class="nav-link" th:href="@{/logout}">Sign out</a>
+				<!-- 	<form class="form-inline my-2 my-lg-0">
+					<input class="form-control mr-sm-2" type="search"
+						placeholder="Search" aria-label="Search"></input>
+					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+				</form> -->
+			</div>
+		</nav>
+		<script th:src="@{/webjars/jquery/3.0.0/jquery.min.js}"></script>
+		<script th:src="@{/webjars/popper.js/1.12.9-1/umd/popper.min.js}"></script>
+		<script th:src="@{/webjars/bootstrap/4.0.0-2/js/bootstrap.min.js}"></script>
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$(".dropdown-toggle").dropdown();
+		});
+	</script>
+</body>
+</html>

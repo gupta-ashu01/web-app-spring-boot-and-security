@@ -1,0 +1,400 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<link th:href="@{/css/create_asset.css}" th:rel="stylesheet"></link>
+<link th:rel="stylesheet"
+	th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css}"></link>
+<body>
+	<div th:insert="/navbar"></div>
+
+	<div class="container cont">
+
+		<form action="#" th:action="@{/save-depreciation}" method="post"
+			th:object="${asset}">
+
+			<div th:switch="${assetSaved}">
+				<input th:case=true type="text" th:value="${errorMsg}" name=""
+					class="error" readonly disabled></input>
+			</div>
+
+
+
+			<div class="row form-group">
+				<div class="col-md-3">
+					<label for="assetNo">Asset No</label>
+				</div>
+				<div class="col-md-9">
+					<input type="text" th:field="*{assetNo}" name="assetNo"
+						class="form-control frm-field frm-field"></input>
+				</div>
+			</div>
+
+			<div class="row form-group">
+				<div class="col-md-3">
+					<label for="assetDesc">Asset Description</label>
+				</div>
+				<div class="col-md-9">
+					<input type="text" th:field="*{assetDescription}" name="assetDesc"
+						class="form-control frm-field"></input>
+				</div>
+			</div>
+
+			<div class="row form-group">
+				<div class="col-md-3">
+					<label for="assetType">Asset Type</label>
+				</div>
+				<div class="col-md-9">
+					<select th:field="*{assetType}" name="assetType"
+						class="form-control frm-field">
+						<option value="0">Select</option>
+						<option th:each="assetType : ${assetTypes}"
+							th:value="${assetType.id}" th:text="${assetType.assetType}"></option>
+					</select>
+				</div>
+			</div>
+
+
+			<div class="row form-group">
+				<div class="col-md-3">
+					<label for="assetQty">Asset Quantity</label>
+				</div>
+				<div class="col-md-9">
+					<input type="text" th:field="*{assetQty}" name="assetQty"
+						class="form-control frm-field"></input>
+				</div>
+
+			</div>
+
+
+
+			<div class="row form-group">
+				<div class="col-md-3">
+					<label for="assetCategory">Asset Category</label>
+				</div>
+				<div class="col-md-9">
+					<select th:field="*{assetCategoryID}" name="assetCategory"
+						class="form-control frm-field">
+						<option value="0">Select</option>
+						<option th:each="category : ${categories}"
+							th:value="${category.id}" th:text="${category.categoryName}"></option>
+					</select>
+				</div>
+			</div>
+
+			<div class="row form-group">
+				<div class="col-md-3">
+					<label for="model">Model</label>
+				</div>
+				<div class="col-md-9">
+					<input type="text" th:field="*{model}" name="model"
+						class="form-control frm-field"></input>
+				</div>
+			</div>
+
+			<div class="row form-group">
+				<div class="col-md-3">
+					<label for="serialNo">Serial Number</label>
+				</div>
+				<div class="col-md-9">
+					<input type="text" th:field="*{serialNumber}" name="serialNo"
+						class="form-control frm-field"></input>
+				</div>
+			</div>
+
+
+			<div class="row form-group">
+				<div class="col-md-3">
+					<label for="location">Location</label>
+				</div>
+				<div class="col-md-9">
+					<input type="text" th:field="*{location}" name="location"
+						class="form-control frm-field"></input>
+				</div>
+			</div>
+
+			<div class="row form-group">
+				<div class="col-md-3">
+					<label for="vendorName">Vendor Name</label>
+				</div>
+				<div class="col-md-9">
+					<select th:field="*{vendorID}" name="vendorName"
+						class="form-control frm-field">
+						<option value="0">Select</option>
+						<option th:each="vendor : ${vendors}" th:value="${vendor.id}"
+							th:text="${vendor.vendorName}"></option>
+					</select>
+				</div>
+			</div>
+
+			<div class="row form-group">
+				<div class="col-md-3">
+					<label for="employeeName">Employee</label>
+				</div>
+				<div class="col-md-9">
+					<select th:field="*{employeeID}" name="employeeName"
+						class="form-control frm-field">
+						<option value="0">Select</option>
+						<option th:each="employee : ${employees}"
+							th:value="${employee.id}"
+							th:text="${employee.lastName +', '+ employee.firstName}"></option>
+					</select>
+				</div>
+			</div>
+
+			<div class="row form-group">
+				<div class="col-md-3">
+					<label for="dateAqd">Date Acquired</label>
+				</div>
+				<div class="col-md-9">
+					<input type="text" th:field="*{dateAcquired}" name="dateAqd"
+						class="form-control frm-field"></input>
+				</div>
+			</div>
+
+			<div class="row form-group">
+				<div class="col-md-3">
+					<label for="dateSold">Disposed</label>
+				</div>
+				<div class="col-md-9">
+					<input type="text" th:field="*{dateSold}" name="dateSold"
+						class="form-control frm-field"></input>
+				</div>
+			</div>
+
+
+			<div class="row form-group">
+				<div class="col-md-3">
+					<label for="regionName">Region</label>
+				</div>
+				<div class="col-md-9">
+					<select th:field="*{region}" name="regionName"
+						class="form-control frm-field">
+						<option value="0">Select</option>
+						<option th:each="region : ${regions}" th:value="${region.id}"
+							th:text="${region.regionName}"></option>
+					</select>
+				</div>
+			</div>
+
+
+			<div class="row form-group">
+				<div class="col-md-3">
+					<label for="departmentName">Department</label>
+				</div>
+				<div class="col-md-9">
+					<select th:field="*{departmentID}" name="departmentName"
+						class="form-control frm-field">
+						<option value="0">Select</option>
+						<option th:each="department : ${departments}"
+							th:value="${department.id}"
+							th:text="${department.departmentName}"></option>
+					</select>
+				</div>
+			</div>
+
+
+			<div class="row form-group">
+				<div class="col-md-3">
+					<label for="division">Division</label>
+				</div>
+				<div class="col-md-9">
+					<select th:field="*{division}" name="division"
+						class="form-control frm-field">
+						<option value="0">Select</option>
+						<option th:each="division : ${divisions}"
+							th:value="${division.id}" th:text="${division.divisionName}"></option>
+					</select>
+				</div>
+			</div>
+
+			<div class="row form-group">
+				<div class="col-md-3">
+					<label for="statusName">Status</label>
+				</div>
+				<div class="col-md-9">
+					<select th:field="*{statusID}" name="statusName"
+						class="form-control frm-field">
+						<option value="0">Select</option>
+						<option th:each="status : ${statusList}" th:value="${status.id}"
+							th:text="${status.statusName}"></option>
+					</select>
+				</div>
+			</div>
+
+
+
+			<div class="row form-group">
+				<div class="col-md-3">
+					<label for="purchasePrice">Purchase Price</label>
+				</div>
+				<div class="col-md-9">
+					<input type="text" th:field="*{purchasePrice}" name="purchasePrice"
+						id="purchasePrice" onblur="calculateDepreciableBase()"
+						class="form-control frm-field"></input>
+				</div>
+			</div>
+
+			<div class="row form-group">
+				<div class="col-md-3">
+					<label for="transportInstall">Transport / Install</label>
+				</div>
+				<div class="col-md-9">
+					<input type="text" th:field="*{transportInstall}"
+						name="transportInstall" id="transportInstall"
+						class="form-control frm-field" onblur="calculateDepreciableBase()"></input>
+				</div>
+			</div>
+
+
+			<div class="row form-group">
+				<div class="col-md-3">
+					<label for="salvageValue">Salvage Value</label>
+				</div>
+				<div class="col-md-9">
+					<input type="text" th:field="*{salvageValue}" id="salvageValue"
+						name="salvageValue" onblur="calculateDepreciableBase()"
+						class="form-control frm-field"></input>
+				</div>
+			</div>
+
+			<div class="row form-group">
+				<div class="col-md-3">
+					<label for="depreciatedToDate">Depreciation To Date</label>
+				</div>
+				<div class="col-md-9">
+					<input type="text" th:field="*{depreciatedToDate}"
+						name="depreciatedToDate" readonly disabled
+						class="form-control frm-field"></input>
+				</div>
+			</div>
+
+
+
+			<div class="row form-group">
+				<div class="col-md-3">
+					<label for="currentValue">Current Value</label>
+				</div>
+				<div class="col-md-9">
+					<input type="text" th:field="*{currentValue}" name="currentValue"
+						id="currentValue" readonly disabled class="form-control frm-field"></input>
+				</div>
+			</div>
+
+
+			<div class="row form-group">
+				<div class="col-md-3">
+					<label for="depreciableBase">Depreciable Base</label>
+				</div>
+				<div class="col-md-9">
+					<input type="text" th:field="*{depreciableBase}"
+						name="depreciableBase" id="depreciableBase" readonly disabled
+						class="form-control frm-field"></input>
+				</div>
+			</div>
+
+
+			<div class="row form-group">
+				<div class="col-md-3">
+					<label for="nextSchedMaint">Next Scheduled Maintenance</label>
+				</div>
+				<div class="col-md-9">
+					<input type="text" th:field="*{nextSchedMaint}"
+						name="nextSchedMaint" class="form-control frm-field"></input>
+				</div>
+			</div>
+
+
+			<div class="row form-group">
+				<div class="col-md-3">
+					<label for="depreciationMethod">Depreciation Method</label>
+				</div>
+				<div class="col-md-9">
+					<select th:field="*{depreciationMethod}" name="depreciationMethod"
+						class="form-control frm-field">
+						<option value="0">Select</option>
+						<option th:each="depreciationMethod : ${depreciationMethods}"
+							th:value="${depreciationMethod.id}"
+							th:text="${depreciationMethod.methodName}"></option>
+					</select>
+				</div>
+			</div>
+
+
+
+			<div class="row form-group">
+				<div class="col-md-3">
+					<label for="depreciableLife">Depreciable Life</label>
+				</div>
+				<div class="col-md-9">
+					<input type="text" th:field="*{depreciableLife}"
+						name="depreciableLife" class="form-control frm-field"></input>
+				</div>
+			</div>
+
+
+
+
+			<div class="row form-group">
+				<div class="col-md-3">
+					<label for="comments">Comments</label>
+				</div>
+				<div class="col-md-9">
+					<textarea th:field="*{comments}" name="comments"
+						class="form-control frm-field"></textarea>
+				</div>
+			</div>
+
+
+			<button type="submit" name="" value="Save"
+				class="btn btn-primary btn-lg">Save</button>
+
+
+			<div th:switch="${assetSaved}">
+				<a th:case="true" th:href="@{/asset-depreciation/(assetid=*{id})}" class="btn btn-primary btn-lg" role="button">Asset Depreciation</a>
+
+				<span class="d-inline-block" tabindex="0" data-toggle="tooltip"
+					title="First, Save the asset">
+					<button th:case="false" type="button" style="pointer-events: none;"
+						class="btn btn-info btn-lg" disabled>Asset Depreciation</button>
+				</span>
+			</div>
+
+
+
+
+		</form>
+
+
+
+	</div>
+
+	<script type="text/javascript">
+		function calculateDepreciableBase() {
+
+			var transport = document.getElementById('transportInstall').value;
+			var purchase = document.getElementById('purchasePrice').value;
+			var salvage = document.getElementById('salvageValue').value;
+
+			if (transport != undefined && transport != '' && transport != null
+					&& purchase != undefined && purchase != ''
+					&& purchase != null && salvage != undefined
+					&& salvage != '' && salvage != null) {
+
+				document.getElementById('depreciableBase').value = (parseInt(transport) + parseInt(purchase))
+						- salvage;
+			}
+
+			//need to change
+			document.getElementById('depreciatedToDate').value = 1;
+			document.getElementById('currentValue').value = 1;
+
+			//end
+
+		}
+	</script>
+
+	<script th:src="@{/webjars/jquery/3.0.0/jquery.min.js}"></script>
+	<script th:src="@{/webjars/popper.js/1.12.9-1/umd/popper.min.js}"></script>
+	<script th:src="@{/webjars/bootstrap/4.0.0-2/js/bootstrap.min.js}"></script>
+</body>
+</html>

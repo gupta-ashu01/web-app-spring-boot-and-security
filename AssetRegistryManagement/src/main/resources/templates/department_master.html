@@ -1,0 +1,69 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<link th:href="@{/css/master.css}" th:rel="stylesheet"></link> 
+<link rel="stylesheet" th:rel="stylesheet"
+	th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css}"></link>
+<body><div th:insert="/navbar"></div>
+
+<div class="container cont">
+	
+	<form th:action="@{/master/department}" th:object="${department}"
+		method="post" class="form-inline">
+		<div class="form-group">
+
+			<input class="form-control" type="text" placeholder="Department Name"
+				th:field="*{departmentName}"></input>
+				<input class="form-control" type="text" placeholder="Department No"
+				th:field="*{departmentNo}"></input>
+			<button class="btn btn-success" type="submit">Add</button>
+		</div>
+	</form>	
+
+	<table class="table table-striped table-bordered table-sm frm-table">
+		<thead>
+			<tr>
+				<th>Department Id</th>
+				<th>Department Name</th>
+				<th>Department No</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+	
+		
+			<tr th:each="department, iStat : ${departmentPage.content}">
+				<td th:text="${department.id}"></td>
+				<td th:text="${department.departmentName}"></td>
+				<td th:text="${department.departmentNo}"></td>
+
+				<td>
+					<a
+							th:href="@{/master/delete-department/(departmentId=*{department.id})}">Delete</a> 
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<nav th:if="${departmentPage.totalPages > 0}" class="frm-nav-pagination">
+		<ul class="pagination pagination-lg justify-content-center">
+			<li class="page-item frm-pagination-link"
+				th:each="pageNumber : ${pageNumbers}"><a class="page-link frm-pagination-link "
+				th:href="@{/master/department(size=${departmentPage.size}, page=${pageNumber})}"
+				th:text=${pageNumber}
+				th:class="${pageNumber==departmentPage.number + 1} ? active"> </a></li>
+
+		</ul>
+	</nav></div>
+
+
+
+
+
+
+
+	<script th:src="@{/webjars/jquery/3.0.0/jquery.min.js}"></script>
+	<script th:src="@{/webjars/popper.js/1.12.9-1/umd/popper.min.js}"></script>
+	<script th:src="@{/webjars/bootstrap/4.0.0-2/js/bootstrap.min.js}"></script>
+</body>
+</html>

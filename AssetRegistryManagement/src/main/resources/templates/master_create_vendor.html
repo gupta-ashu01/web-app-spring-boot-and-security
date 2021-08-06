@@ -1,0 +1,162 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<link th:href="@{/css/create_asset.css}" th:rel="stylesheet"></link>
+<link th:rel="stylesheet"
+	th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css}"></link>
+<body>
+	<div th:insert="/navbar"></div>
+
+	<div class="container cont">
+
+		<form action="#" th:action="@{/master/create-vendor}" method="post"
+			th:object="${vendor}">
+
+			<div class="row form-group">
+				<div class="col-md-3">
+					<label for="vendorName">Vendor Name</label>
+				</div>
+				<div class="col-md-9">
+					<input type="text" th:field="*{vendorName}" name="vendorName"
+						class="form-control frm-field frm-field"></input>
+				</div>
+			</div>
+
+
+
+			<div class="row form-group">
+				<div class="col-md-3">
+					<label for="contactFirstName">Contact First Name</label>
+				</div>
+				<div class="col-md-9">
+					<input type="text" th:field="*{contactFirstName}"
+						name="contactFirstName" class="form-control frm-field frm-field"></input>
+				</div>
+			</div>
+
+			<div class="row form-group">
+				<div class="col-md-3">
+					<label for="contactLastName">Contact Last Name</label>
+				</div>
+				<div class="col-md-9">
+					<input type="text" th:field="*{contactLastName}"
+						name="contactLastName" class="form-control frm-field frm-field"></input>
+				</div>
+			</div>
+
+
+			<div class="row form-group">
+				<div class="col-md-3">
+					<label for="title">Title</label>
+				</div>
+				<div class="col-md-9">
+					<input type="text" th:field="*{title}" name="title"
+						class="form-control frm-field frm-field"></input>
+				</div>
+			</div>
+
+			<div class="row form-group">
+				<div class="col-md-3">
+					<label for="address">Address</label>
+				</div>
+				<div class="col-md-9">
+					<input type="text" th:field="*{address}" name="address"
+						class="form-control frm-field frm-field"></input>
+				</div>
+			</div>
+
+			<div class="row form-group">
+				<div class="col-md-3">
+					<label for="city">City</label>
+				</div>
+				<div class="col-md-9">
+					<input type="text" th:field="*{city}" name="city"
+						class="form-control frm-field frm-field"></input>
+				</div>
+			</div>
+
+
+			<div class="row form-group">
+				<div class="col-md-3">
+					<label for="stateOrProvince">State Or Province</label>
+				</div>
+				<div class="col-md-9">
+					<input type="text" th:field="*{stateOrProvince}"
+						name="stateOrProvince" class="form-control frm-field frm-field"></input>
+				</div>
+			</div>
+
+			<div class="row form-group">
+				<div class="col-md-3">
+					<label for="postalCode">Postal Code</label>
+				</div>
+				<div class="col-md-9">
+					<input type="text" th:field="*{postalCode}" name="postalCode"
+						class="form-control frm-field frm-field"></input>
+				</div>
+			</div>
+
+
+			<div class="row form-group">
+				<div class="col-md-3">
+					<label for="country">Country</label>
+				</div>
+				<div class="col-md-9">
+					<input type="text" th:field="*{country}" name="country"
+						class="form-control frm-field frm-field"></input>
+				</div>
+			</div>
+
+
+
+			<div class="row form-group">
+				<div class="col-md-3">
+					<label for="phoneNumber">Phone Number</label>
+				</div>
+				<div class="col-md-9">
+					<input type="text" th:field="*{phoneNumber}" name="phoneNumber"
+						class="form-control frm-field frm-field"></input>
+				</div>
+			</div>
+
+
+			<div class="row form-group">
+				<div class="col-md-3">
+					<label for="faxNumber">Fax Number</label>
+				</div>
+				<div class="col-md-9">
+					<input type="text" th:field="*{faxNumber}" name="faxNumber"
+						class="form-control frm-field frm-field"></input>
+				</div>
+			</div>
+
+			<div class="row form-group">
+				<div class="col-md-3">
+					<label for="notes">Notes</label>
+				</div>
+				<div class="col-md-9">
+					<textarea th:field="*{notes}" name="notes"
+						class="form-control frm-field frm-field"></textarea>
+				</div>
+			</div>
+			<button type="submit" name="" value="Save"
+				class="btn btn-primary btn-lg">Save</button>
+
+
+
+
+
+
+		</form>
+
+
+
+	</div>
+
+
+
+	<script th:src="@{/webjars/jquery/3.0.0/jquery.min.js}"></script>
+	<script th:src="@{/webjars/popper.js/1.12.9-1/umd/popper.min.js}"></script>
+	<script th:src="@{/webjars/bootstrap/4.0.0-2/js/bootstrap.min.js}"></script>
+</body>
+</html>
